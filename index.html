@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Cloaking Icons</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f8f9fc;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            line-height: 1.5;
+            color: #1e293b;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2rem 2.5rem 2rem;
+            transition: all 0.2s;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #1F2B48, #2C3E66);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #0f172a;
+            border-bottom: 2px solid #e9edf2;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #1e293b;
+            display: inline-block;
+            background: #eef2ff;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-family: monospace;
+            font-weight: 500;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            padding-left: 0.25rem;
+        }
+
+        img {
+            width: 128px;
+            height: 128px;
+            object-fit: contain;
+            background: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+            vertical-align: middle;
+            margin: 0.25rem 0.5rem 0.25rem 0;
+        }
+
+        .icon-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin: 0.75rem 0 1rem 0;
+            background: #ffffff;
+            padding: 0.75rem;
+            border-radius: 28px;
+        }
+
+        h2+.icon-row,
+        h2+img {
+            margin-top: 0.25rem;
+        }
+
+        pre {
+            background: #1e1e1e;
+            border-radius: 16px;
+            padding: 1rem 0;
+            margin: 1rem 0 1.5rem 0;
+            overflow-x: hidden;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            border: 1px solid #2d2f33;
+            transition: all 0.1s;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        code {
+            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            font-weight: 400;
+            color: #d4d4d4;
+            white-space: pre-wrap !important;
+            word-break: break-word;
+        }
+
+        .hljs {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 0 1.2rem !important;
+            display: block;
+            white-space: pre-wrap !important;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            font-size: 0.85rem;
+        }
+
+        pre::-webkit-scrollbar {
+            display: none;
+        }
+
+        pre {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        p code,
+        li code {
+            background: #eef2ff;
+            padding: 0.2rem 0.4rem;
+            border-radius: 8px;
+            font-size: 0.85em;
+            color: #0f172a;
+            font-family: monospace;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            background: #f1f5f9;
+            border-radius: 12px;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+            margin: 0.25rem 0;
+        }
+
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, #e2e8f0, #cbd5e1, #e2e8f0);
+        }
+
+        @media (max-width: 720px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            img {
+                width: 56px;
+                height: 56px;
+            }
+
+            pre code,
+            .hljs {
+                font-size: 0.75rem;
+            }
+        }
+
+        .service-badge {
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: #eef2ff;
+            border-radius: 24px;
+            padding: 0.2rem 0.75rem;
+            margin-left: 0.5rem;
+            color: #2563eb;
+        }
+
+        .custom-context-menu {
+            display: none;
+            position: absolute;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            padding: 0.5rem;
+            z-index: 10000;
+            min-width: 180px;
+        }
+
+        .custom-context-menu button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            padding: 0.6rem 0.8rem;
+            font-family: inherit;
+            font-size: 0.85rem;
+            color: #334155;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .custom-context-menu button:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cloaking icons for hiding tabs at school</h1>
+
+        <h2>New tab</h2>
+        <div class="icon-row">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAZlBMVEUAAABAQEA4QEg4QEA6QEU6QEA8QEQ8QEA9QEM+QEM6QEI7QEQ7QEI8QEQ8QEI8QEQ8QEI9QEQ9QEI8QEM8QEI7QEM7QEM8QEM8QEM8QEQ8QEM9QEM9QEI7QEM7QEI8QEM8QEI8QEOBp9B1AAAAIXRSTlMAECAgMDBAQFBfYHBwf3+AgI+PkJCfoK+/z8/f39/f7+84OiXtAAAB70lEQVR42u3azU7jMBRA4SSeJmmHGX5MwEBLct//JTldWLIMsVNgYVf3W1WQKmdx1dhuG6WUusQAixfMEAFmOFgM0IDrCzjgDbLRCXtoQP0BHRzkm07ooAF1BuwxQ35oxggNqCtghPyyPTSgnoA3yC+b0UED6gi4gaxYcIsR5kItNKCOgDMHiVi0aH5AA8oOmOBf95DAXzSBFjsM+CpqSNCAMgP8DcMLniG4Q3jjB8yQwITwYWMhKwZoQHkBjxCc4IfK4BXhZjW1WPHv9aELBDELDSgvwEEQD90O/vUTJOMe/vpbCGKv0IDyAsKBmdEifvhIRvzeEWvXaEB5ARKZ8OlhtZEfXANZoQHlB8QLhz+QjQZoQH0BCyTi0CBaYGS1SA3uDA0oL+AFuUNmC8mYkFvAOGhAeQGP2LLZOEJWvMMgd+htoQHlBfTYstkwiIdrQXyI+Q+yYoAGlBXgpQbsBvFGpccO/sZeh9SgNtCAMgMOkIT/aJLyBxl7aEC5AWcOknDChAEGZx3CQ63cAGpA2QEGC+QCWxYhCww0oPyAS3/INGHLB9mIBhpQR4CPWCDIbURSX2gt8DfXgLoCzgyO2LK4eIBEHHygBtQZ4B1wxNriokP8vzBOA+oP8HpYOIwIDyMcLHr4v2vA9QUopa7SBwy1hh79c1UmAAAAAElFTkSuQmCC"
+                alt="new tab icon light mode">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAZlBMVEUAAAC/v7/Hv7/Hv7fFv7/Fv7rDv7/Dv7vCv7zBv7zFv73Ev73Ev7vDv73Dv7vDv73Dv7vCv73Cv7vDv73Dv7zEv7zEv7zDv7zDv7zDv7zDv7vEv73Ev7zCv73Cv7zDv73Dv7zDv7xno0nKAAAAIXRSTlMAECAgMDBAQFBfYHBwf3+AgI+PkJCfoK+/z8/f39/f7+84OiXtAAAB70lEQVR42u3azU7jMBRA4cTpJGmZGf4cMNCS3Pd/SU4XlixD7BRY2NX9VhWkyllcNbbbRimlLtHD4hULRIAFDhY9NOD6Ag54h2x0xB4aUH9ABwf5piM6aECdAXsskB9aMEID6goYIb9sDw2oJ+Ad8ssWdNCAOgJuICtm3GGEuVALDagj4MxBIhYtmh/QgLIDJvjXAyTwF02gxQ49vorqEzSgzAB/w/CCZwhuEd74HgskMCF82FjIih4aUF7AIwRH+KEyeEG4WU0tVvx7fegMQcxCA8oLcBDEQ7eDf/0EyXiAv/4OgtgLNKC8gHBgFrSIHz6SEb93xNo1GlBegEQmfHpYbeQH10BWaED5AfHC4Q9kox4aUF/ADIk4NIgWGFktUoO7QAPKC3hF7pDZQjIm5BYwDhpQXsAjtmw2TpAVbzDIHXpbaEB5AQO2bDYM4uGaER9i/oes6KEBZQV4qQG7QbxRGbCDv7HXITWoDTSgzIADJOEfmqT8QcYeGlBuwJmDJBwxoYfBWYfwUCs3gBpQdoDBDLnAlkXIDAMNKD/g0h8yTdjyQTaigQbUEeAjZghyG5HUF1oz/M01oK6AM4MTtiwu7iERBx+oAXUGeAecsLa46BD/L4zTgPoDvAEWDiPCwwgHiwH+7xpwfQFKqav0AXlzhL6TK7MLAAAAAElFTkSuQmCC"
+                alt="new tab icon dark mode">
+        </div>
+
+        <br>
+        <h4>Data URi (no download)</h4>
+        <pre><code class="language-html">&lt;title&gt;New tab&lt;/title&gt;
+&lt;link rel="icon" type="image/png" sizes="any" media="(prefers-color-scheme: light)" &nbsp;&nbsp;&nbsp;&nbsp;href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAZlBMVEUAAABAQEA4QEg4QEA6QEU6QEA8QEQ8QEA9QEM+QEM6QEI7QEQ7QEI8QEQ8QEI8QEQ8QEI9QEQ9QEI8QEM8QEI7QEM7QEM8QEM8QEM8QEQ8QEM9QEM9QEI7QEM7QEI8QEM8QEI8QEOBp9B1AAAAIXRSTlMAECAgMDBAQFBfYHBwf3+AgI+PkJCfoK+/z8/f39/f7+84OiXtAAAB70lEQVR42u3azU7jMBRA4SSeJmmHGX5MwEBLct//JTldWLIMsVNgYVf3W1WQKmdx1dhuG6WUusQAixfMEAFmOFgM0IDrCzjgDbLRCXtoQP0BHRzkm07ooAF1BuwxQ35oxggNqCtghPyyPTSgnoA3yC+b0UED6gi4gaxYcIsR5kItNKCOgDMHiVi0aH5AA8oOmOBf95DAXzSBFjsM+CpqSNCAMgP8DcMLniG4Q3jjB8yQwITwYWMhKwZoQHkBjxCc4IfK4BXhZjW1WPHv9aELBDELDSgvwEEQD90O/vUTJOMe/vpbCGKv0IDyAsKBmdEifvhIRvzeEWvXaEB5ARKZ8OlhtZEfXANZoQHlB8QLhz+QjQZoQH0BCyTi0CBaYGS1SA3uDA0oL+AFuUNmC8mYkFvAOGhAeQGP2LLZOEJWvMMgd+htoQHlBfTYstkwiIdrQXyI+Q+yYoAGlBXgpQbsBvFGpccO/sZeh9SgNtCAMgMOkIT/aJLyBxl7aEC5AWcOknDChAEGZx3CQ63cAGpA2QEGC+QCWxYhCww0oPyAS3/INGHLB9mIBhpQR4CPWCDIbURSX2gt8DfXgLoCzgyO2LK4eIBEHHygBtQZ4B1wxNriokP8vzBOA+oP8HpYOIwIDyMcLHr4v2vA9QUopa7SBwy1hh79c1UmAAAAAElFTkSuQmCC"&gt;
+
+&lt;link rel="icon" type="image/png" sizes="any" media="(prefers-color-scheme: dark)" &nbsp;&nbsp;&nbsp;&nbsp;href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAZlBMVEUAAAC/v7/Hv7/Hv7fFv7/Fv7rDv7/Dv7vCv7zBv7zFv73Ev73Ev7vDv73Dv7vDv73Dv7vCv73Cv7vDv73Dv7zEv7zEv7zDv7zDv7zDv7zDv7vEv73Ev7zCv73Cv7zDv73Dv7zDv7xno0nKAAAAIXRSTlMAECAgMDBAQFBfYHBwf3+AgI+PkJCfoK+/z8/f39/f7+84OiXtAAAB70lEQVR42u3azU7jMBRA4cTpJGmZGf4cMNCS3Pd/SU4XlixD7BRY2NX9VhWkyllcNbbbRimlLtHD4hULRIAFDhY9NOD6Ag54h2x0xB4aUH9ABwf5piM6aECdAXsskB9aMEID6goYIb9sDw2oJ+Ad8ssWdNCAOgJuICtm3GGEuVALDagj4MxBIhYtmh/QgLIDJvjXAyTwF02gxQ49vorqEzSgzAB/w/CCZwhuEd74HgskMCF82FjIih4aUF7AIwRH+KEyeEG4WU0tVvx7fegMQcxCA8oLcBDEQ7eDf/0EyXiAv/4OgtgLNKC8gHBgFrSIHz6SEb93xNo1GlBegEQmfHpYbeQH10BWaED5AfHC4Q9kox4aUF/ADIk4NIgWGFktUoO7QAPKC3hF7pDZQjIm5BYwDhpQXsAjtmw2TpAVbzDIHXpbaEB5AQO2bDYM4uGaER9i/oes6KEBZQV4qQG7QbxRGbCDv7HXITWoDTSgzIADJOEfmqT8QcYeGlBuwJmDJBwxoYfBWYfwUCs3gBpQdoDBDLnAlkXIDAMNKD/g0h8yTdjyQTaigQbUEeAjZghyG5HUF1oz/M01oK6AM4MTtiwu7iERBx+oAXUGeAecsLa46BD/L4zTgPoDvAEWDiPCwwgHiwH+7xpwfQFKqav0AXlzhL6TK7MLAAAAAElFTkSuQmCC"&gt;</code></pre>
+
+        <br>
+        <h4>Image source (images must be in same directory)</h4>
+        <pre><code class="language-html">&lt;title&gt;New tab&lt;/title&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;any&quot; media=&quot;(prefers-color-scheme: light)&quot;
+    href=&quot;./new-tab-icon-light-mode.png&quot;&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;any&quot; media=&quot;(prefers-color-scheme: dark)&quot;
+    href=&quot;./new-tab-icon-dark-mode.png&quot;&gt;</code></pre>
+
+        <br>
+        <h2>Google Classroom</h2>
+        <div class="icon-row">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABq0lEQVR42qWTPWsUURSGn3Mxwk4aNVlJE1kLQZ0UEWsF/QsWG7HQlFrY2plGf4VEBQXBVhDRViGoYDOKXUKKfEBISLKTD5LcN5vD5bILSZUXDvfODO87zzncy2llB3/Gn2h/+T4mgtGnKEABouHbGIjRAIMYYGD4g+3NNGWqMROYyBJIBhiKBjKUCgV/JyuwvR+DMoNqe4i/O03MSGZA8tUrCiK+LxtrjBXrHnbGkxHVVpOPq1fBgGQuBhpu7Ox2UkBE3WoPqxuyAUcBkuGK8o8kDZ4tmLr7DART317S2alRJspdEqTUn0D+B3k9HJ+gdW6U1vlRJm8+cDO5cA+5BR8UbgQB8Ob3+675EgDTP9/hhFI/hcBbMJEJkhz5+ZcXbqh3E34vP4bIBKCeGYyNXKMcue4rQLX4j5m5X8yuzHqI08r6hphaiDy99Zg7V27Tq7Ib1L5xj0/VZ159fw2Qz0VQtJTmFG4+SZcvtPrMPgMUAFE21mkPzVP9n6ZXEll1vcREc4Gy2Mwn1eqvFwUC43gJIBFi+VkizYAwifSIPNxsPEbZmOjC21Nf50P2ER5bit1iLgAAAABJRU5ErkJggg=="
+                alt="Google Classroom icon">
+        </div>
+
+        <br>
+        <h4>Data URi (no download)</h4>
+        <pre><code class="language-html">&lt;title&gt;Home - Classroom&lt;/title&gt;
+&lt;link rel="icon" type="image/png" sizes="any" &nbsp;&nbsp;&nbsp;&nbsp;href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABq0lEQVR42qWTPWsUURSGn3Mxwk4aNVlJE1kLQZ0UEWsF/QsWG7HQlFrY2plGf4VEBQXBVhDRViGoYDOKXUKKfEBISLKTD5LcN5vD5bILSZUXDvfODO87zzncy2llB3/Gn2h/+T4mgtGnKEABouHbGIjRAIMYYGD4g+3NNGWqMROYyBJIBhiKBjKUCgV/JyuwvR+DMoNqe4i/O03MSGZA8tUrCiK+LxtrjBXrHnbGkxHVVpOPq1fBgGQuBhpu7Ox2UkBE3WoPqxuyAUcBkuGK8o8kDZ4tmLr7DART317S2alRJspdEqTUn0D+B3k9HJ+gdW6U1vlRJm8+cDO5cA+5BR8UbgQB8Ob3+675EgDTP9/hhFI/hcBbMJEJkhz5+ZcXbqh3E34vP4bIBKCeGYyNXKMcue4rQLX4j5m5X8yuzHqI08r6hphaiDy99Zg7V27Tq7Ib1L5xj0/VZ159fw2Qz0VQtJTmFG4+SZcvtPrMPgMUAFE21mkPzVP9n6ZXEll1vcREc4Gy2Mwn1eqvFwUC43gJIBFi+VkizYAwifSIPNxsPEbZmOjC21Nf50P2ER5bit1iLgAAAABJRU5ErkJggg=="&gt;</code></pre>
+
+        <br>
+        <h4>Image source (image must be in same directory)</h4>
+        <pre><code class="language-html">&lt;title&gt;Home - Classroom&lt;/title&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;any&quot;
+    href=&quot;./google-classroom-icon.png&quot;&gt;</code></pre>
+
+        <br>
+        <h4>Side Pages</h4>
+        <pre><code class="language-html">&lt;title&gt;To-do - Classroom&lt;/title&gt;</code></pre>
+        <h5>OR</h5>
+        <pre><code class="language-html">&lt;title&gt;Calendar - Classroom&lt;/title&gt;</code></pre>
+
+        <br>
+        <h2>Amplify</h2>
+        <div class="icon-row">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAB8ElEQVR42u2W2StEcRTH/SdjK8uDFG8eJE88KMqbB6XkTVmaKUKpiSKhLCFkT8ouZYlskSwhe0kGJXSXuXfm3nt+zm8Mdce1zfyUqTl9H+7v16lP53vO+XWD+MLgP1VQAOAPgJJYvjROJ0s0M4DUkw+a5ilZFGtT2QAEa6Jjqcux3K2crRNCVNuxerWPH46FVsY9cG4OEwBpyGLvzMMP7f6CKaA4XOMe0ByhMoEviQHFCQBCVTIzgNiYCQCq7YRzHdWLTXRJHrcyA6Dj1PfFttejPF1D+3G5xbECoOMEwN6S5S6oLg0wVIUvj2cAQK8BQxZ4c4T7sigMW0J7PlDMAIBeEwLK4bxuqLbH0CVlf9ZXAPfWUufOhNSb/y46tYTQsixRvlVQFodeExrwQYQ2pj3HJ4DUX0jX6u5cGqnwEG41rWx9wCeAsjdDR3623qA3k9WU/XzPF4V6CzBHgsQDgNiQYbB9NSngCrE+3UuAvS2bAIDwiE+FUUKI9nhDF3CuyUuAY7XXNT+Tn76Aa310pW9PvAGgs9qT7ettsnfkEsDQBGvSLwA45srRgnK6AgAEAN8cPMqjlbqcQTNeqmdr7pzrA5ozXfsjgDxTpwlPoJdzY0jn3nyzQc7uFF9g+h7AFRhLn2MyyjH9z7+KAMDfAS/Y/cJocieDKgAAAABJRU5ErkJggg=="
+                alt="Amplify icon">
+        </div>
+
+        <!--
+        <h4>
+            Title NOT confirmed - If you have Amplify, create a pull request
+        </h4>
+        <h4>
+            See contributing in the README for more info
+        </h4>
+        -->
+
+        <br>
+        <h4>Data URi (no download)</h4>
+        <pre><code class="language-html">&lt;title&gt;Amplify&lt;/title&gt;
+&lt;link rel="icon" type="image/png" sizes="any" &nbsp;&nbsp;&nbsp;&nbsp;href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAB8ElEQVR42u2W2StEcRTH/SdjK8uDFG8eJE88KMqbB6XkTVmaKUKpiSKhLCFkT8ouZYlskSwhe0kGJXSXuXfm3nt+zm8Mdce1zfyUqTl9H+7v16lP53vO+XWD+MLgP1VQAOAPgJJYvjROJ0s0M4DUkw+a5ilZFGtT2QAEa6Jjqcux3K2crRNCVNuxerWPH46FVsY9cG4OEwBpyGLvzMMP7f6CKaA4XOMe0ByhMoEviQHFCQBCVTIzgNiYCQCq7YRzHdWLTXRJHrcyA6Dj1PfFttejPF1D+3G5xbECoOMEwN6S5S6oLg0wVIUvj2cAQK8BQxZ4c4T7sigMW0J7PlDMAIBeEwLK4bxuqLbH0CVlf9ZXAPfWUufOhNSb/y46tYTQsixRvlVQFodeExrwQYQ2pj3HJ4DUX0jX6u5cGqnwEG41rWx9wCeAsjdDR3623qA3k9WU/XzPF4V6CzBHgsQDgNiQYbB9NSngCrE+3UuAvS2bAIDwiE+FUUKI9nhDF3CuyUuAY7XXNT+Tn76Aa310pW9PvAGgs9qT7ettsnfkEsDQBGvSLwA45srRgnK6AgAEAN8cPMqjlbqcQTNeqmdr7pzrA5ozXfsjgDxTpwlPoJdzY0jn3nyzQc7uFF9g+h7AFRhLn2MyyjH9z7+KAMDfAS/Y/cJocieDKgAAAABJRU5ErkJggg=="&gt;</code></pre>
+
+        <br>
+        <h4>Image source (image must be in same directory)</h4>
+        <pre><code class="language-html">&lt;title&gt;Amplify&lt;/title&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;any&quot;
+    href=&quot;./amplify-icon.png&quot;&gt;</code></pre>
+
+        <br>
+        <h2>Clever</h2>
+        <div class="icon-row">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAFTUExURVJ65kl37klf7lJk40lc7klJ7VJk5Elb7VJS40Jz9kJx9kJv9UJt9kJr9UJp9kJn9UJl9UJj9UJh9UJe9UJd9UJx9UJv9kJt9UJp9UJf9UJc9UJa9UJY9UJr9lV08WiA71958EVi9EJb9UJW9UJU9W+K8dLZ8/v7+/z8/Pv8/Ozu95qm8EVb9EJS9YGY8Pj5+/7+/vX2+tre9O7v+P39/X2K7kJQ9VJz8vDy+MLL81Bq8kZe9I+c8KSt70JO9ZGl8u3v+Exn80JM9bfD8v///8DI8kJJ9bjC8sHI8kJN9UJH9UJg9ZOj8k1i80JL9UJF9EJi9VNr8vLz+cLI81Bg8kVT9IqS8LzA8UhP80JD9ISS8Pn6+/X1+tnc9O3u+IiM7kJF9UJC9HJ/8dbZ9Pv7/Pz8/eXn9oyQ8EJC9UJT9UJP9Vdi8Ghv7l1k70NJ9EJJ9EJR9X8afPwAAAAJdFJOU1n391n391n3WRnhBfEAAAABYktHRET5tJjBAAAAB3RJTUUH6gYGEhE5wl7kPgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNi0wNi0wNlQxODoxNzo1NyswMDowMNk5mM0AAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjYtMDYtMDZUMTg6MTc6NTcrMDA6MDCoZCBxAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI2LTA2LTA2VDE4OjE3OjU3KzAwOjAw/3EBrgAAAPBJREFUGNNjYGDk5OLm4eXjFxAUEhZhYgbyRcXEeSVAfEkpaRkWBk4uMXFZCX45eQVFKSUZZRUGoHpZCVU1dQ1NLW0dZRVdBpB6PX0DQyNjEw1TFV0zBiDf3MLA0krK2sYWyLdjAJpvb+DgCDRPGcR3YgCa7+ziCue7MQDtc3fxgPA9ndy8GAQEvX0MjH3B8n5uXv4MAd7CgUEGwSG6oWHhEV7+kQzewlLSUdEGMbFxJhrxCZGJDMIg85KSU1I109L9IxMzGED8TN2s7JzcvITIjMREBiaQ+VmefvlA/YmJiawMbOwqBWaeIPOB6hNZOQBZYjFLycBRRAAAAABJRU5ErkJggg=="
+                alt="Clever icon">
+        </div>
+
+        <br>
+        <h4>Data URi (no download)</h4>
+        <pre><code class="language-html">&lt;title&gt;Clever | Portal&lt;/title&gt;
+&lt;link rel="icon" type="image/png" sizes="any" &nbsp;&nbsp;&nbsp;&nbsp;href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAB8ElEQVR42u2W2StEcRTH/SdjK8uDFG8eJE88KMqbB6XkTVmaKUKpiSKhLCFkT8ouZYlskSwhe0kGJXSXuXfm3nt+zm8Mdce1zfyUqTl9H+7v16lP53vO+XWD+MLgP1VQAOAPgJJYvjROJ0s0M4DUkw+a5ilZFGtT2QAEa6Jjqcux3K2crRNCVNuxerWPH46FVsY9cG4OEwBpyGLvzMMP7f6CKaA4XOMe0ByhMoEviQHFCQBCVTIzgNiYCQCq7YRzHdWLTXRJHrcyA6Dj1PfFttejPF1D+3G5xbECoOMEwN6S5S6oLg0wVIUvj2cAQK8BQxZ4c4T7sigMW0J7PlDMAIBeEwLK4bxuqLbH0CVlf9ZXAPfWUufOhNSb/y46tYTQsixRvlVQFodeExrwQYQ2pj3HJ4DUX0jX6u5cGqnwEG41rWx9wCeAsjdDR3623qA3k9WU/XzPF4V6CzBHgsQDgNiQYbB9NSngCrE+3UuAvS2bAIDwiE+FUUKI9nhDF3CuyUuAY7XXNT+Tn76Aa310pW9PvAGgs9qT7ettsnfkEsDQBGvSLwA45srRgnK6AgAEAN8cPMqjlbqcQTNeqmdr7pzrA5ozXfsjgDxTpwlPoJdzY0jn3nyzQc7uFF9g+h7AFRhLn2MyyjH9z7+KAMDfAS/Y/cJocieDKgAAAABJRU5ErkJggg=="&gt;</code></pre>
+
+        <br>
+        <h4>Image source (image must be in same directory)</h4>
+        <pre><code class="language-html">&lt;title&gt;Clever | Portal&lt;/title&gt;
+&lt;link rel=&quot;icon&quot; type=&quot;image/png&quot; sizes=&quot;any&quot;
+    href=&quot;./clever-icon.png&quot;&gt;</code></pre>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                if (!block.className || !block.className.includes('language-')) {
+                    block.classList.add('language-html');
+                }
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+
+    <div id="image-context-menu" class="custom-context-menu">
+        <button id="ctx-open-tab">Open image in new tab</button>
+        <button id="ctx-save-image">Save image as...</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const icons = document.querySelectorAll('.icon-row img');
+            const menu = document.getElementById('image-context-menu');
+            const openTabBtn = document.getElementById('ctx-open-tab');
+            const saveImageBtn = document.getElementById('ctx-save-image');
+            
+            let activeImgSrc = '';
+            let activeImgAlt = '';
+
+            icons.forEach(img => {
+                img.addEventListener('contextmenu', (e) => {
+                    e.preventDefault(); 
+                    
+                    activeImgSrc = img.src;
+                    activeImgAlt = img.getAttribute('alt') || 'icon';
+
+                    menu.style.top = `${e.pageY}px`;
+                    menu.style.left = `${e.pageX}px`;
+                    menu.style.display = 'block';
+                });
+            });
+
+            openTabBtn.addEventListener('click', () => {
+                const newTab = window.open();
+                newTab.document.write(`<img src="${activeImgSrc}" style="max-width:100%; height:auto;">`);
+                newTab.document.title = activeImgAlt;
+                newTab.document.close();
+                hideMenu();
+            });
+
+            saveImageBtn.addEventListener('click', () => {
+                let fileName = activeImgAlt.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '.png';
+
+                const link = document.createElement('a');
+                link.href = activeImgSrc;
+                link.download = fileName;
+                
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                hideMenu();
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!menu.contains(e.target)) {
+                    hideMenu();
+                }
+            });
+
+            // window.addEventListener('scroll', hideMenu);
+            window.addEventListener('resize', hideMenu);
+
+            function hideMenu() {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
